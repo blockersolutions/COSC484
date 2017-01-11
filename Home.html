@@ -1,0 +1,248 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Content/Site.css" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="Scripts/site.js"></script>
+
+    <script>
+        function readComments() {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("comments2").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "getComments.php", true);
+            xmlhttp.send();
+        }
+
+        function deleteComments(str) {
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xmlhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("comments2").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "deleteComments.php?q=" + str, true);
+            xmlhttp.send();
+
+        }
+
+        function showCars(str) {
+            if (str == "") {
+                document.getElementById("carInfo").innerHTML = "";
+                return;
+            } else {
+                if (window.XMLHttpRequest) {
+                    // code for IE7+, Firefox, Chrome, Opera, Safari
+                    xmlhttp = new XMLHttpRequest();
+                } else {
+                    // code for IE6, IE5
+                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                xmlhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("carInfo").innerHTML = this.responseText;
+                    }
+                };
+                xmlhttp.open("GET", "showCars.php?q=" + str, true);
+                xmlhttp.send();
+            }
+        }
+    </script>
+</head>
+<body onload="readComments()">
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Comments.html">Leave a Comment</a></li>
+                    <li><a href="Forum.html">Forums</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="3300">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-slide-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+            <li data-target="#myCarousel" data-slide-to="5"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+
+            <div class="item active">
+                <a href="http://money.cnn.com/2016/07/01/technology/bmw-intel-mobileye/"><img class="img-responsive" src="pictures/bmw.jpg" style="height:600px;width:2000px;"></a>
+                <div class="carousel-caption">
+                    <h3>BMW</h3>
+                    <p>BMW has teamed with two leading tech companies to deliver fully self-driving vehicles in 2021.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="http://www.bloomberg.com/news/features/2016-08-18/uber-s-first-self-driving-fleet-arrives-in-pittsburgh-this-month-is06r7on">
+                    <img class="img-responsive" src="pictures/uber.jpg" style="height:600px;width:2000px;">
+                </a>
+                <div class="carousel-caption">
+                    <h3>Uber</h3>
+                    <p>Uber’s First Self-Driving Fleet Arrives in Pittsburgh</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="https://www.mercedes-benz.com/en/mercedes-benz/innovation/research-vehicle-f-015-luxury-in-motion/"><img class="img-responsive" src="pictures/benz.jpg" style="height:600px;width:2000px;" /></a>
+                <div class="carousel-caption">
+                    <h3>Mercedes-Benz</h3>
+                    <p>The Mercedes-Benz F 015 Luxury in Motion research car and its immersive user experience is an innovative perspective into the future of mobility.</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="http://www.dailymail.co.uk/sciencetech/article-3592567/The-self-driving-car-behaves-like-person-Audi-s-robotic-vehicle-taught-human-manners.html">
+                    <img class="img-responsive" src="pictures/audi.jpg" style="height:600px;width:2000px;" />
+                </a>
+                <div class="carousel-caption">
+                    <h3>Audi</h3>
+                    <p>The self-driving car that behaves like a person: Audi's robotic vehicle is being taught human manners</p>
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="https://www.google.com/selfdrivingcar/"><img class="img-responsive" src="pictures/google.jpg" style="height:600px;width:2000px;"></a>
+                <div class="carousel-caption">
+                    <h3>Google</h3>
+                    <p>
+                        The self-driving car project aims to make it easier and safer for everyone to get around.
+                        The team is building prototype vehicles that can take you where you want to go at the push of a button—no driving required.
+                    </p>
+                </div>
+            </div>
+
+            <div class="item">
+                <a href="https://www.tesla.com/videos/full-self-driving-hardware-all-tesla-cars">
+                    <img class="img-responsive" src="pictures/tesla.jpg" style="height:600px;width:2000px;" />
+                </a>
+                <div class="carousel-caption">
+                    <h3>Tesla</h3>
+                    <p>Full Self-Driving Hardware on All Teslas</p>
+                </div>
+            </div>
+
+            <!-- Left and right controls -->
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center">
+        <div class="row content">
+            <div class="col-sm-2 sidenav">
+                <h2>Comments</h2>
+                <div id="comments2">
+
+
+                </div>
+            </div>
+            <div class="col-sm-8 text-left">
+                <h1 class="text-center">The Future of Driving</h1>
+                <p>
+                    Autonomous cars can detect surroundings using a variety of techniques such as radar, lidar, GPS, odometry, and computer vision. Advanced control systems interpret sensory information to identify appropriate navigation paths, as well as obstacles and relevant signage. Autonomous cars
+                    have control systems that are capable of analyzing sensory data to distinguish between different cars on the road, which is very useful in planning a path to the desired destination.
+
+                </p>
+                <hr>
+            </div>
+
+            <div class="col-sm-2 sidenav">
+                <div class="well">
+                    <form>
+                        <p>Self Driving Cars Make & Models</p>
+                        <div class="form-group">
+                            <label for="selectList">Select list:</label>
+                            <select class="form-control" onchange="showCars(this.value)" name ="selectList" id="selectList">
+                                <option>Select A Make</option>
+                                <option value="1">Audi</option>
+                                <option value="2">BMW</option>
+                                <option value="3">Mercedes-Benz</option>
+                                <option value="4">Google</option>
+                                <option value="5">Tesla</option>
+                                <option value="6">Show All</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div class="table-responsive" id="carInfo">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center">
+        <h3>News about Self-Driving Cars</h3><br>
+
+        <div class="row" style="background-color:white;">
+            <div class="col-sm-4">
+                <a href="https://www.google.com/selfdrivingcar/"><img src="pictures/googleproject.jpg" class="img-responsive" style="width:100%; height:185px;" alt="Image" /></a>
+                <p>Google Self-Driving Car Project</p>
+            </div>
+            <div class="col-sm-4">
+                <a href="https://www.mercedes-benz.com/en/mercedes-benz/innovation/research-vehicle-f-015-luxury-in-motion/"><img src="pictures/benzproject.jpg" class="img-responsive" style="width:100%; height:185px;" alt="Image"></a>
+                <p>Mercedes-Benz F 015 </p>
+            </div>
+            <div class="col-sm-4">
+                <a href="https://www.tesla.com/blog/all-tesla-cars-being-produced-now-have-full-self-driving-hardware">
+                    <img src="pictures/teslaproject.jpg" class="img-responsive" style="width:100%;height:185px;" alt="Image">
+                </a>
+                <p>All Tesla Cars Being Produced Now Have Full Self-Driving Hardware</p>
+            </div>
+        </div>
+    </div><br>
+    <footer class="container-fluid text-center">
+        <p>William Blocker COSC 484</p>
+        <p><a href="Login.html">Admin Login</a></p>
+    </footer>
+
+</body>
+</html>

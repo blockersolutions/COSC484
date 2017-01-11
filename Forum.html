@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Forum</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Content/Site.css" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="chat.js"></script>
+    <script type="text/javascript">
+    
+        // ask user for name with popup prompt    
+        var name = prompt("Enter your chat name:", "Guest");
+        
+        // default name is 'Guest'
+    	if (!name || name === ' ') {
+    	   name = "Guest";	
+    	}
+    	
+    	// strip tags
+    	name = name.replace(/(<([^>]+)>)/ig,"");
+    	
+    	// display name on page
+    	$("#name-area").html("You are: <span>" + name + "</span>");
+    	
+    	// kick off chat
+        var chat =  new Chat();
+    	$(function() {
+    	
+    		 chat.getState(); 
+    		 
+    		 // watch textarea for key presses
+             $("#sendie").keydown(function(event) {  
+             
+                 var key = event.which;  
+           
+                 //all keys including return.  
+                 if (key >= 33) {
+                   
+                     var maxLength = $(this).attr("maxlength");  
+                     var length = this.value.length;  
+                     
+                     // don't allow new content if length is maxed out
+                     if (length >= maxLength) {  
+                         event.preventDefault();  
+                     }  
+                  }  
+    		 																																																});
+    		 // watch textarea for release of key press
+    		 $('#sendie').keyup(function(e) {	
+    		 					 
+    			  if (e.keyCode == 13) { 
+    			  
+                    var text = $(this).val();
+    				var maxLength = $(this).attr("maxlength");  
+                    var length = text.length; 
+                     
+                    // send 
+                    if (length <= maxLength + 1) { 
+                     
+    			        chat.send(text, name);	
+    			        $(this).val("");
+    			        
+                    } else {
+                    
+    					$(this).val(text.substring(0, maxLength));
+    					
+    				}	
+    				
+    				
+    			  }
+             });
+            
+    	});
+    </script>
+
+    <style>
+        /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+        .row.content {
+            height: 1500px;
+        }
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            background-color: #f1f1f1;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #555;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+
+            .row.content {
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body onload="setInterval('chat.update()', 1000)">
+
+    <div class="container-fluid">
+        <div class="row content">
+            <div class="col-sm-3 sidenav">
+                <h4>Self-Driving Car Chat</h4>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Comments.html">Leave a Comment</a></li>
+                    <li class="active"><a href="Forum.html">Forums</a></li>
+                </ul><br>
+            </div>
+            <h4>Discuss Self-Driving Cars</h4>
+    <div id="page-wrap">
+        
+        <p id="name-area"></p>
+        
+        <div id="chat-wrap"><div id="chat-area"></div></div>
+        
+        <form id="send-message-area">
+            <p>Your message: </p>
+            <textarea id="sendie" maxlength = '100' ></textarea>
+        </form>
+    
+    </div>
+        </div>
+    </div>
+
+    <footer class="container-fluid text-center">
+        <p>William Blocker COSC 484</p>
+    </footer>
+
+</body>
+</html>

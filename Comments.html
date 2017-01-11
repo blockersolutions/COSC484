@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Comments</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="Content/Site.css" />
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.validate.js"></script>
+
+</head>
+<body>
+
+    <nav class="navbar navbar-inverse">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"></a>
+            </div>
+            <div class="collapse navbar-collapse" id="myNavbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="Home.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li class="active"><a href="Comments.html">Leave a Comment</a></li>
+                    <li><a href="Forum.html">Forums</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <h3 id="comments">Post A Comment</h3>
+    <form class="form-horizontal"  id=commentForm method="post" action="postComment.php">
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="name">Name</label>
+            <div class="col-sm-2">
+                <input type="text" class="form-control" id="name" placeholder="Enter Name" name="name" minlength="5" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="date">Date</label>
+            <div class="col-sm-2">
+                <input type="date" class="form-control" id="date" name="date" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="comment">Comments</label>
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="newtext" placeholder="" name="comment" minlength="8" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label col-sm-2" for="checkbox">Would you recommend this page to a friend?</label>
+            <div class="col-md-8">
+                <div class="checkbox">
+                    <label id="label1"><input type="checkbox" id="check1" value="">Yes</label>
+                </div>
+                <div class="checkbox">
+                    <label><input type="checkbox" id="check2" value="">No</label>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2">
+                <button type="submit" class="btn btn-default" id="submit">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    <footer class="container-fluid text-center">
+        <p>William Blocker COSC 484</p>
+    </footer>
+
+</body>
+</html>
